@@ -1,1 +1,26 @@
 <app-navbar></app-navbar>
+<div>
+  <table *ngFor="let item of loadedStories; index as i">
+    <tr>
+      <td>
+        <span class="rankNumber">{{ i + 1 }}.</span>
+        <img class="voteArrow" />
+        {{ item.title }}
+        <span class="site">({{ item.url }})</span>
+      </td>
+    </tr>
+    <tr class="subtext">
+      <td>
+        <span class="score"> {{ item.score }} points by</span>
+        <a href="#" class="name"> {{ item.by }} </a>
+        <span class="time">
+          <a href="#" class="name">{{ item.time | date : "shortTime" }}</a>
+          |
+          <a href="#">hide</a>
+          |
+          <a href="#" class="comments">{{ item.descendants }} comments</a>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
