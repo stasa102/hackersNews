@@ -1,5 +1,4 @@
 <nav class="navbar">
-  <!-- <img src="y18.svg" alt="Y" /> -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18"
@@ -12,12 +11,13 @@
       fill="#fff"
     ></path>
   </svg>
-  <ul class="nav-list">
-    <li class="nav-name">Hacker News</li>
-    <li *ngFor="let item of navItems">
+  <table>
+    <a class="nav-name">Hacker News</a>
+
+    <td *ngFor="let item of navItems">
       <a href="#">{{ item }}</a>
       |
-    </li>
-  </ul>
+    </td>
+  </table>
   <a class="login" href="#">login</a>
 </nav>
