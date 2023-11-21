@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   providers: [HomepageService],
 })
 export class HomepageComponent implements OnInit {
-  loadedStoriesIds: any = [];
+  loadedStoriesIds: number[] = [];
   loadedStories: any = [];
   storieId: any;
   baseUrl: any;
@@ -29,13 +29,11 @@ export class HomepageComponent implements OnInit {
     return this.homepageService
       .onFetchTopStoriesIds()
       .subscribe((response: any) => {
-        this.loadedStoriesIds = response;
-        this.loadedStoriesIds.forEach((storieId: any) => {
+        response.forEach((storieId: any) => {
           this.http
             .get(`${this.displayBaseUrl}/item/${storieId}.json?print=pretty`)
-            .subscribe((response) => {
-              // console.log(response);
-              this.loadedStories.push(response);
+            .subscribe((responseData) => {
+              this.loadedStories = [...this.loadedStories, responseData];
             });
         });
       });
