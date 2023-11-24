@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomepageService } from '../services/homepage.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-homepage',
@@ -9,33 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./homepage.component.scss'],
   providers: [HomepageService],
 })
-export class HomepageComponent implements OnInit {
-  loadedStoriesIds: number[] = [];
-  loadedStories: any = [];
-  storieId: any;
-  baseUrl: any;
-
-  constructor(
-    private homepageService: HomepageService,
-    private http: HttpClient
-  ) {}
-
-  // get baseUrl variable from service for http.get
-  public get displayBaseUrl(): string {
-    return this.homepageService.baseUrl;
-  }
-
-  ngOnInit() {
-    return this.homepageService
-      .onFetchTopStoriesIds()
-      .subscribe((response: any) => {
-        response.forEach((storieId: any) => {
-          this.http
-            .get(`${this.displayBaseUrl}/item/${storieId}.json?print=pretty`)
-            .subscribe((responseData) => {
-              this.loadedStories = [...this.loadedStories, responseData];
-            });
-        });
-      });
-  }
+export class HomepageComponent {
+  constructor() {}
 }
