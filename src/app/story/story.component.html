@@ -1,25 +1,15 @@
-<div>
-  <table *ngFor="let item of loadedStories; index as i">
-    <tr>
-      <td>
-        <span class="rankNumber">{{ i + 1 }}.</span>
-        <img class="voteArrow" />
-        <a href="#" class="title">{{ item.title }}</a>
-        <span class="site">({{ item.url }})</span>
-      </td>
-    </tr>
-    <tr class="subtext">
-      <td>
-        <span class="score"> {{ item.score }} points by</span>
-        <a href="#" class="name"> {{ item.by }} </a>
-        <span class="time">
-          <a href="#" class="name">{{ item.time | date : "shortTime" }}</a>
-          |
-          <a href="#">hide</a>
-          |
-          <a href="" class="comments">{{ item.descendants }} comments</a>
-        </span>
-      </td>
-    </tr>
-  </table>
+<div *ngIf="story" class="item">
+  <div>
+    <span class="index">{{ index + 1 }}.</span>
+    <svg class="triangle" />
+    <a href="#" class="title">{{ story.title }} </a>
+    <a href="#">({{ story.url }})</a>
+  </div>
+  <div>
+    <span> {{ story.score }} points by</span>
+    <a href="#"> {{ story.by }} </a>
+    <a href="#"> {{ story?.time | date : "shortTime" }} |</a>
+    <a href="#"> hide | </a>
+    <a href="#">{{ story.descendants }} comments</a>
+  </div>
 </div>

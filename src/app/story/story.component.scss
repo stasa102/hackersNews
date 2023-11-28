@@ -1,62 +1,34 @@
-$primary-color: #e7e7da;
 $subtext-color: #999999;
-$font-stack: Verdana, sans-serif;
-div {
-  background-color: $primary-color;
-  position: relative;
-  font-family: $font-stack;
-  font-size: 14.6667px;
-
-  .voteArrow {
-    width: 15px;
-    height: 15px;
-    margin: 3px 2px 6px;
-    background: url(triangle.svg), linear-gradient(transparent, transparent);
-    background-size: 13px;
-    background-repeat: no-repeat;
-    position: relative;
-    top: 8px;
-    left: -2px;
+.item {
+  padding-bottom: 10px;
+  .triangle {
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    margin: 3px 2px 0px;
+    background: url(triangle.svg),
+      linear-gradient(transparent, transparent) no-repeat;
+    background-size: 10px;
   }
 
-  td {
-    .rankNumber {
-      color: $subtext-color;
-    }
+  a,
+  span {
+    text-decoration: none;
+    color: $subtext-color;
+    font-size: small;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 
-    .site {
-      color: #828282;
-      font-size: 10.6667px;
-    }
+  .index {
+    font-size: medium;
   }
   .title {
-    color: #000;
-    text-decoration: none;
-    padding-right: 3px;
+    color: black;
+    font-size: medium;
   }
-  .subtext {
-    color: $subtext-color;
-    font-size: 12px;
-  }
-  .subtext .name {
-    color: $subtext-color;
+  .title:hover {
     text-decoration: none;
   }
-  .time a {
-    text-decoration: none;
-    color: $subtext-color;
-  }
-}
-
-.btnLoadMore {
-  border: none;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-  text-align: left;
-  background-color: $primary-color;
-  color: #828282;
-  font-size: 14.6667px;
-  margin: 2px solid #828282;
-  padding-top: 5px;
 }
