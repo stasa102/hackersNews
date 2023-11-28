@@ -7,7 +7,6 @@ import { HomepageService } from '../services/homepage.service';
   styleUrls: ['./stories-list.component.scss'],
 })
 export class StoriesListComponent implements OnInit {
-  @Input() loadedStories: any = [];
   loadedStoryIds: number[] = [];
   error: string = '';
   firstIndex: number = 0;

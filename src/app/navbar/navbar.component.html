@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18"
@@ -20,4 +20,14 @@
     </td>
   </table>
   <a class="login" href="#">login</a>
-</nav>
+</nav> -->
+
+<div class="container">
+  <svg class="yLogo"></svg>
+  <a href="#" class="title"><b>Hacker News</b></a>
+  <div *ngFor="let item of navItems" class="item">
+    <a href="#">{{ item }}</a
+    >|
+  </div>
+  <a class="login" href="#">login</a>
+</div>
