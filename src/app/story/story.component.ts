@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HomepageService } from '../services/homepage.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-story',
@@ -10,27 +11,36 @@ export class StoryComponent implements OnInit {
   loadedStoriesIds: number[] = [];
   @Input() storyId: any;
   @Input() index: number = 0;
-  story: any;
+  @Input() story: any;
   baseUrl: any;
   error: string = '';
-
-  constructor(private homepageService: HomepageService) {}
+  // loggingStoryId: any;
+  constructor(
+    private homepageService: HomepageService,
+    private router: Router // private route: ActivatedRoute
+  ) {}
 
   // get baseUrl variable from service for http.get
   public get displayBaseUrl(): string {
     return this.homepageService.baseUrl;
   }
+  commentsClicked() {
+    this.storyId = this.story.id;
+    this.router.navigate(['/item', this.storyId]);
+  }
 
   ngOnInit() {
-    return this.homepageService.onFetchStory(this.storyId).subscribe(
-      (responseData) => {
-        // Shallow Copy
+    // this.loggingStoryId = this.route.params.subscribe((params) => {
+    //   console.log(params);
+    // });
+    this.homepageService.onFetchStory(this.storyId).subscribe({
+      next: (responseData) => {
         this.story = responseData;
       },
-      (error: string) => {
+      error: (error: string) => {
         this.error = error;
         console.log(error);
-      }
-    );
+      },
+    });
   }
 }

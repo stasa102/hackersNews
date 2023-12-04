@@ -1,15 +1,17 @@
-<div *ngIf="story" class="item">
+<div class="item">
   <div>
     <span class="index">{{ index + 1 }}.</span>
     <svg class="triangle" />
-    <a href="#" class="title">{{ story.title }} </a>
-    <a href="#">({{ story.url }})</a>
+    <a class="title">{{ story?.title }} </a>
+    <a href="#">({{ story?.url }})</a>
   </div>
   <div>
-    <span> {{ story.score }} points by</span>
-    <a href="#"> {{ story.by }} </a>
-    <a href="#"> {{ story.time | date : "shortTime" }} |</a>
+    <span> {{ story?.score }} points by</span>
+    <a href="#"> {{ story?.by }} </a>
+    <a href="#"> {{ story?.time | date : "shortTime" }} |</a>
     <a href="#"> hide | </a>
-    <a href="#">{{ story.descendants }} comments</a>
+    <a [routerLink]="['/item']" (click)="commentsClicked()"
+      >{{ story?.descendants }} comments</a
+    >
   </div>
 </div>
