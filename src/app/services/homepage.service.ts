@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,20 +11,20 @@ export class HomepageService {
   onFetchTopStoriesIds() {
     return this.fetchTopStoriesIds();
   }
-  onFetchStory(storieId: number) {
-    return this.fetchStory(storieId);
+  onFetchStory(storyId: number) {
+    return this.fetchStory(storyId);
   }
-  onFetchCommentsIds() {
-    return this.fetchCommentsIds();
+  onFetchComment(commentId: number) {
+    return this.fetchComment(commentId);
   }
 
   private fetchTopStoriesIds() {
     return this.http.get(`${this.baseUrl}topstories.json?print=pretty`);
   }
-  private fetchStory(storieId: number) {
-    return this.http.get(`${this.baseUrl}item/${storieId}.json?print=pretty`);
+  private fetchStory(storyId: number) {
+    return this.http.get(`${this.baseUrl}item/${storyId}.json?print=pretty`);
   }
-  private fetchCommentsIds() {
-    return this.http.get(`${this.baseUrl}comments.json?print=pretty`);
+  private fetchComment(commentId: number) {
+    return this.http.get(`${this.baseUrl}item/${commentId}.json?print=pretty`);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomepageService } from '../services/homepage.service';
 
 @Component({
@@ -10,20 +10,20 @@ export class StoriesListComponent implements OnInit {
   loadedStoryIds: number[] = [];
   error: string = '';
   firstIndex: number = 0;
-  indexToLoad: number = 30;
+  indexToLoad: number = 5;
 
   constructor(private homepageService: HomepageService) {}
 
   ngOnInit() {
-    return (
-      this.homepageService.onFetchTopStoriesIds().subscribe((response: any) => {
+    this.homepageService.onFetchTopStoriesIds().subscribe({
+      next: (response: any) => {
         this.loadedStoryIds = response;
-      }),
-      (error: string) => {
+      },
+      error: (error: string) => {
         this.error = error;
         console.log(error);
-      }
-    );
+      },
+    });
   }
 
   loadTenMore() {

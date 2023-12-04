@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { HomepageService } from '../services/homepage.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-comment',
@@ -8,42 +7,39 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent implements OnInit {
-  loadedCommentsIds: any = [];
-  loadedComments: any = [];
-  commentId: any = [];
-  error: string = '';
-
+  @Input() commentId: any;
+  @Input() childCommentIds: any;
+  @Input() childCommentId: any;
+  comment: any;
+  childComment: any;
+  storyId: any;
+  parent: any;
+  @Input() expanded: boolean = true;
   constructor(
     private homepageService: HomepageService,
-    private http: HttpClient
+    private el: ElementRef
   ) {}
 
-  public get displayBaseUrl(): string {
-    return this.homepageService.baseUrl;
+  toggleComm() {
+    let btn = this.el.nativeElement.getElementsByClassName('commentBody');
+    if (this.expanded === true) {
+      this.expanded = false;
+    } else {
+      this.expanded = true;
+      btn.classList?.remove('hidden');
+    }
   }
 
-  // onClickedComment() {
-  //   return this.homepageService
-  //     .onFetchTopStoriesIds()
-  //     .subscribe((response: any) => {
-  //       response.forEach((storieId: any) => {
-  //         this.http
-  //           .get(`${this.displayBaseUrl}/item/${storieId}.json?print=pretty`)
-  //           .subscribe(
-  //             (responseData) => {
-  //               // Shallow Copy
-  //               this.loadedComments = [...this.loadedComments, responseData];
-  //             },
-  //             (error: string) => {
-  //               this.error = error;
-  //               console.log(error);
-  //             }
-  //           );
-  //       });
-  //     });
-  // }
-
-  onClickedComment() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.homepageService.onFetchComment(this.commentId).subscribe({
+      next: (response) => {
+        this.comment = response;
+        console.log('comment: ', this.comment);
+        this.childCommentIds = this.comment?.kids;
+        this.childCommentIds?.forEach((el: any) => {
+          this.childCommentId = el;
+        });
+      },
+    });
+  }
 }

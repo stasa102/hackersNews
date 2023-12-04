@@ -1,0 +1,12 @@
+<app-story [storyId]="storyId"></app-story>
+<div>
+  <textarea name="" id="" cols="50" rows="10"></textarea>
+  <button>add comment</button>
+</div>
+<div *ngIf="expanded">
+  <div *ngFor="let commentId of loadedCommentsIds">
+    <div class="firstLevelComment">
+      <app-comment [commentId]="commentId"></app-comment>
+    </div>
+  </div>
+</div>

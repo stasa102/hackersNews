@@ -1,8 +1,8 @@
 <div class="container">
   <div *ngFor="let storyId of loadedStoryIds; index as i">
-    <tr *ngIf="i + 1 > firstIndex && i < indexToLoad">
+    <div *ngIf="i + 1 > firstIndex && i < indexToLoad">
       <app-story [storyId]="storyId" [index]="i"></app-story>
-    </tr>
+    </div>
   </div>
   <button type="button" class="btn" (click)="loadTenMore()">More</button>
 </div>

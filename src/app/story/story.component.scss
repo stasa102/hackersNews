@@ -1,6 +1,20 @@
 $subtext-color: #999999;
+
+$primary-color: #e7e7da;
+$subtext-color: #999999;
+$font-stack: Verdana, sans-serif;
+
 .item {
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-color;
+  padding: 10px;
+  max-width: 100%;
+  font-family: $font-stack;
   padding-bottom: 10px;
+  .hidden {
+    display: none;
+  }
   .triangle {
     width: 10px;
     height: 10px;

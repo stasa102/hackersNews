@@ -8,8 +8,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StoriesListComponent } from './stories-list/stories-list.component';
 import { StoryComponent } from './story/story.component';
-import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comment/comment.component';
+import { CommonModule } from '@angular/common';
+import { StoryCommentsListComponent } from './story-comments-list/story-comments-list.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import { CommentComponent } from './comment/comment.component';
     NavbarComponent,
     StoriesListComponent,
     StoryComponent,
-    CommentsComponent,
     CommentComponent,
+    StoryCommentsListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

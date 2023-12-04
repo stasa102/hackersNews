@@ -1,17 +1,22 @@
-<app-story></app-story>
-<div class="writeComment">
-  <textarea name="" id="" cols="50" rows="15"></textarea>
-  <button type="submit" onclick="">add comment</button>
-</div>
-
-<div class="comment">
-  <a href="">by</a>
-  <a href="">time</a>
-  |
-  <a href="">previous</a>
-  |
-  <a href="">next</a>
-  <a href="">[-]</a>
-
-  <p class="description">text</p>
+<div *ngIf="!comment?.dead">
+  <div class="commentData">
+    <svg class="triangle" />
+    <a href="">{{ comment?.by }}</a>
+    <a href=""> {{ comment?.time | date : "shortTime" }}</a>
+    |
+    <a href="">prev</a>
+    |
+    <a href="">next</a>
+    <button class="commentNum" (click)="toggleComm()">
+      [{{ comment?.kids?.length }} more]
+    </button>
+  </div>
+  <div class="commentBody">
+    <p>{{ comment?.text }}</p>
+  </div>
+  <div class="childComment" *ngIf="comment?.kids">
+    <div *ngFor="let commentKids of comment.kids">
+      <app-comment [hidden]="!expanded" [commentId]="commentKids"></app-comment>
+    </div>
+  </div>
 </div>
