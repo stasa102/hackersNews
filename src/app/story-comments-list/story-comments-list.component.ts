@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomepageService } from '../services/homepage.service';
 
@@ -15,6 +15,7 @@ export class StoryCommentsListComponent implements OnInit {
   commentId: any;
   error: string = '';
   expanded: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     private homepageService: HomepageService
@@ -26,18 +27,15 @@ export class StoryCommentsListComponent implements OnInit {
 
   ngOnInit() {
     this.storyId = this.route.snapshot.paramMap.get('storyId');
-
     this.homepageService.onFetchStory(this.storyId).subscribe({
       next: (responseData) => {
         this.story = responseData;
         this.loadedCommentsIds = this.story.kids;
-        // console.log(this.loadedCommentsIds);
 
         this.loadedCommentsIds.forEach((commentId: any) => {
           this.homepageService.onFetchComment(commentId).subscribe({
             next: (response) => {
               this.comment = response;
-              // console.log(this.comment);
             },
           });
         });

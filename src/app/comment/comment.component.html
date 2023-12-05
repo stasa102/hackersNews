@@ -3,10 +3,10 @@
     <svg class="triangle" />
     <a href="">{{ comment?.by }}</a>
     <a href=""> {{ comment?.time | date : "shortTime" }}</a>
-    |
-    <a href="">prev</a>
-    |
-    <a href="">next</a>
+
+    <a href=""> | prev </a>
+
+    <a href=""> | next</a>
     <button class="commentNum" (click)="toggleComm()">
       [{{ comment?.kids?.length }} more]
     </button>

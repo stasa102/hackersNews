@@ -1,6 +1,6 @@
 $subtext-color: #999999;
 
-$primary-color: #e7e7da;
+$primary-color: #f6f6ef;
 $subtext-color: #999999;
 $font-stack: Verdana, sans-serif;
 
@@ -11,7 +11,11 @@ $font-stack: Verdana, sans-serif;
   padding: 10px;
   max-width: 100%;
   font-family: $font-stack;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  width: 90%;
   .hidden {
     display: none;
   }

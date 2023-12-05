@@ -13,7 +13,7 @@ export class CommentComponent implements OnInit {
   comment: any;
   childComment: any;
   storyId: any;
-  parent: any;
+
   @Input() expanded: boolean = true;
   constructor(
     private homepageService: HomepageService,
